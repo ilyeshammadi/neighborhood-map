@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+nav {
+	margin-bottom: 0 !important;
+}
+
+
+/*#container {
+    display: flex;
+}*/
+
+#search-area {
+	width: 280px;
+	height: calc(100vh - 50px);
+	float: left;
+	background-color: #f8f8f8;
+}
+
+#map {
+	height: calc(100vh - 50px);
+	width: calc(100% - 280px);
+	float: right;
+	background-color: deepskyblue;
+}
+
+
+@media (max-width: 768px) {
+	#map {
+		width: 100%;
+	}
+	#search-area {
+		box-shadow: 2px 8px 13px black;
+	}
+}
