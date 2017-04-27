@@ -1,11 +1,12 @@
 // Main ViewModel
-function MapListViewModel(map) {
+function MapListViewModel(map, locations) {
 	var self = this;
 	// Get the Google mpa
 	self.map = map;
 
 	// Init all the locations
 	self.locations = ko.observableArray([]);
+	self.locations(locations);
 
 	// Search value
 	self.search = ko.observable('');
@@ -41,15 +42,6 @@ function MapListViewModel(map) {
 
 	// Click on locations list item
 	self.onLocationClick = function (location) {
-		console.log("Click on " + location.name);
 		new google.maps.event.trigger(location.marker, 'click');
 	}
-
-	// Init data after it complete
-	$.getJSON("js/models/data.json").then((data) => {
-		const locations = parseData(data.response.groups[0].items);
-		self.locations(initLocationsWithMarkers(map, locations));
-		
-	})
-
 }

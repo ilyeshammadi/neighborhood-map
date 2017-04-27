@@ -1,6 +1,7 @@
 // Location model
-function Location(name, text, lat, lng, picture_url, address, canonicalUrl) {
+function Location(id, name, text, lat, lng, picture_url, address, canonicalUrl) {
 	var self = this;
+	self.id = id;
 	self.name = name;
 	self.lat = lat;
 	self.lng = lng;
@@ -31,23 +32,23 @@ function addMarker(map, location) {
 		animation: google.maps.Animation.DROP,
 	});
 
-	var contentString = '<div class="marker-detail">' +
-		'<a href="' + location.canonicalUrl + '" target="_blank"><h3>' + location.name + '</h3></a>' +
-		'<p>' + location.text + '</p>' +
-		'<span>Data from Foursquare API</span>' +
-		'</div>';
 
-	marker.infowindow = new google.maps.InfoWindow({
-		content: contentString
-	});
+	marker.infowindow = new google.maps.InfoWindow();
+	marker.infowindow.setContent('<div class="loader"></div>')
+
 	marker.addListener('click', function () {
+
+		getPlaceDetail(location.id).then((content) => {
+			// Set the info window content
+			marker.infowindow.setContent(content);
+		});
+
 		// Close all the info windows before opening a new one
 		closeAllInfoWindows(locations);
 		marker.infowindow.open(map, marker)
 
 		// Run animation
 		marker.setAnimation(google.maps.Animation.BOUNCE);
-
 	});
 
 	// Stop animation when closing the info window
@@ -103,7 +104,7 @@ function parseData(items) {
 		lng = parseFloat(venue.location.lng);
 		picture_url = parseImage(venue);
 		address = formatAddress(venue);
-		locations.push(new Location(venue.name, item.tips[0].text, lat, lng, picture_url, address, item.tips[0].canonicalUrl));
+		locations.push(new Location(venue.id, venue.name, item.tips[0].text, lat, lng, picture_url, address, item.tips[0].canonicalUrl));
 	});
 	return locations;
 }
@@ -115,4 +116,35 @@ function parseImage(venue) {
 
 function formatAddress(venue) {
 	return venue.location.formattedAddress[0] + ',' + venue.location.formattedAddress[1];
+}
+
+async function getPlaceDetail(venue_id) {
+	let contentString;
+
+	try {
+		const data = await $.getJSON("https://api.foursquare.com/v2/venues/" + venue_id, {
+			client_id: CLIENT_ID,
+			client_secret: CLIENT_SECRET,
+			v: 20170426
+		})
+
+		const venue = data.response.venue;
+
+		// Check if venue has description
+		if (!venue.description) {
+			venue.description = '';
+		}
+
+		contentString = '<div class="marker-detail">' +
+			'<a href="' + venue.canonicalUrl + '" target="_blank"><h3>' + venue.name + '</h3></a>' +
+			'<p>' + venue.description + '</p>' +
+			'<span>Data from Foursquare API</span>' +
+			'</div>';
+
+	} catch (err) {
+		alertError();
+		contentString = "Can't load data from server";
+	}
+
+	return contentString;
 }

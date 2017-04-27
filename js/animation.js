@@ -36,7 +36,7 @@ function openSearchArea() {
 	// Chabge yhe map width
 	$("#content").css({
 		width: "calc(100vw - 280px)",
-        marginLeft: "-4px"
+		marginLeft: "-4px"
 	})
 }
 
@@ -49,6 +49,10 @@ function closeSearchArea() {
 	// Chabge yhe map width
 	$("#content").css({
 		width: "100vw",
-        marginLeft: "0"
+		marginLeft: "0"
 	})
+}
+
+function alertError() {
+	$('#alert-message').append('<div class="alert alert-danger" role="alert">Data can\'t be loaded</div>');
 }
