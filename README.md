@@ -29,3 +29,4 @@ $ python -m SimpleHTTPServer
 ```
 
 ## License
+[MIT](https://github.com/Ilyes-Hammadi/neighborhood-map/blob/master/LICENSE)
