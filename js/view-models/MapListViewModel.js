@@ -5,7 +5,7 @@ function MapListViewModel(map) {
 	self.map = map;
 
 	// Init all the locations
-	self.locations = ko.observableArray(initLocationsWithMarkers(map, locations))
+	self.locations = ko.observableArray([]);
 
 	// Search value
 	self.search = ko.observable('');
@@ -38,4 +38,18 @@ function MapListViewModel(map) {
 
 		return locations;
 	});
+
+	// Click on locations list item
+	self.onLocationClick = function (location) {
+		console.log("Click on " + location.name);
+		new google.maps.event.trigger(location.marker, 'click');
+	}
+
+	// Init data after it complete
+	$.getJSON("js/models/data.json").then((data) => {
+		const locations = parseData(data.response.groups[0].items);
+		self.locations(initLocationsWithMarkers(map, locations));
+		
+	})
+
 }

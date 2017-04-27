@@ -13,27 +13,38 @@
 
 <body>
 
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Neighborhood Map</a>
-			</div>
-		</div>
-	</nav>
+
 
 	<div id="container">
-		<div id="map"></div>
-		<div id="search-area" class="hidden-xs">
+		<div id="search-area">
+			<h4 id="app-name">Neighborhood Map</h4>
 			<div class="input-group">
 				<input type="text" class="form-control" placeholder="Station location" aria-describedby="basic-addon2" data-bind="textInput: search">
-				<span class="input-group-addon" id="basic-addon2"><i class="fa fa-filter" aria-hidden="true"></i></span>
+				<span class="input-group-addon" id="basic-addon2"><i class="fa fa-filter" aria-hidden="true"></i> Filter</span>
 			</div>
-
 			<div id="locations" class="list-group" data-bind="foreach: filterLocations">
-				<a class="location list-group-item" data-bind="text: name"></a>
+				<a href="#" class="list-group-item" data-bind="click: $root.onLocationClick">
+					<div class="item-container">
+						<img data-bind="attr: {src: picture_url, alt: name}">
+						<div class="name-container">
+							<p data-bind="text: name"></p>
+							<span data-bind="text: address"></span>
+						</div>
+					</div>
+				</a>
 			</div>
 		</div>
 
+		<div id="content">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a id="nav-btn" class="navbar-brand" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+					</div>
+				</div>
+			</nav>
+			<div id="map"></div>
+		</div>
 
 	</div>
 
@@ -47,6 +58,7 @@
 	<script src="js/models/Location.js"></script>
 	<script src="js/view-models/MapListViewModel.js"></script>
 	<script src="js/index.js"></script>
+	<script src="js/animation.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
 // Init the google maps API
 function createMap() {
     return new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -25.363, lng: 131.044},
-        zoom: 4
+        center: {lat: 40.76000115504161, lng: -73.98469640461299},
+        zoom: 15
     });
 }
