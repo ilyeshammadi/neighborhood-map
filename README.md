@@ -27,3 +27,5 @@ The server will run on `localhost:8000`
 ```python
 $ python -m SimpleHTTPServer
 ```
+
+## License
