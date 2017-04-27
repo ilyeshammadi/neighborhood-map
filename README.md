@@ -11,7 +11,7 @@ $ cd neighborhood-map
 ```
 
 ### Setup keys
-Get your foursquare api key [here](https://developer.foursquare.com/), After you get your API keys, put them in the `js/constants.js` file.
+Get your foursquare api key [here](https://developer.foursquare.com/), after you get your API keys, put them in the `js/constants.js` file.
 ```javascript
 const CLIENT_ID = "client_id"
 const CLIENT_SECRET = "client_secret"
