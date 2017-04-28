@@ -8,6 +8,7 @@ Front-end Web Developer Nanodegree project
 ```shell
 $ git clone https://github.com/Ilyes-Hammadi/neighborhood-map.git
 $ cd neighborhood-map
+$ npm install
 ```
 
 ### Setup keys
