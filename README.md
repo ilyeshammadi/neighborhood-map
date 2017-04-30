@@ -12,15 +12,15 @@ $ npm install
 ```
 
 ### Setup keys
-Get your foursquare api key [here](https://developer.foursquare.com/), after you get your API keys, put them in the `js/constants.js` file.
+Get your foursquare api key [here](https://developer.foursquare.com/), after you get your API keys, put them in the `js/keys.js` file.
 ```javascript
-const CLIENT_ID = "client_id"
-const CLIENT_SECRET = "client_secret"
+const CLIENT_ID = "CLIENT_ID"
+const CLIENT_SECRET = "CLIENT_SECRET"
 ```
 
-Set your Google Maps API key in the `index.html` file, you can get an API key [here](https://developers.google.com/maps/documentation/javascript/get-api-key)
-```html
-<script src="https://maps.googleapis.com/maps/api/js?key=<YOUR-KEY>"></script>
+Set your Google Maps API key in the `js/keys.js` file, you can get an API key [here](https://developers.google.com/maps/documentation/javascript/get-api-key)
+```javascript
+const GOOGLE_MAPS_API = 'GOOGLE_MAPS_API';
 ```
 
 ### Run the devlopement server

@@ -11,6 +11,9 @@ function Location(id, name, text, lat, lng, picture_url, address, canonicalUrl) 
 	self.text = text;
 }
 
+// Global objects
+const locations = [];
+
 // Init locations with markers
 function initLocationsWithMarkers(map, locations) {
 	return _.map(locations, function (loc) {
@@ -88,8 +91,6 @@ function closeAllInfoWindows(locations) {
 	})
 }
 
-// Global locations object
-const locations = [];
 
 // Function to parse the Foursquare data
 function parseData(items) {

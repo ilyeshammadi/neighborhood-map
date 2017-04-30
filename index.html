@@ -13,7 +13,7 @@
 
 <body>
 	<div id="container">
-		<div id="search-area">
+		<aside id="search-area">
 			<h4 id="app-name">Neighborhood Map</h4>
 			<div class="input-group">
 				<input type="text" class="form-control" placeholder="Station location" aria-describedby="basic-addon2" data-bind="textInput: search">
@@ -30,7 +30,7 @@
 					</div>
 				</a>
 			</div>
-		</div>
+		</aside>
 
 		<div id="content">
 			<nav class="navbar navbar-default">
@@ -41,18 +41,19 @@
 				</div>
 			</nav>
 			<div id="alert-message"></div>
-			<div id="map"></div>
+			<main id="map"></main>
 		</div>
 
 	</div>
+
+	<!--<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACYq8s44eOLXVGKTmVADjHCtjFpIK0mWo"></script>-->
 
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="node_modules/lodash/lodash.js"></script>
 	<script src="node_modules/knockout/build/output/knockout-latest.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=<YOUR-KEY>"></script>
 	
-	<script src="js/constants.js"></script>
+	<script src="js/keys.js"></script>
 	<script src="js/map.js"></script>
 	<script src="js/models/Location.js"></script>
 	<script src="js/view-models/MapListViewModel.js"></script>

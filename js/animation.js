@@ -53,6 +53,7 @@ function closeSearchArea() {
 	})
 }
 
-function alertError() {
-	$('#alert-message').append('<div class="alert alert-danger" role="alert">Data can\'t be loaded</div>');
+function alertError(message) {
+	const compiled = _.template('<div class="alert alert-danger" role="alert"><%= message %></div>')
+	$('#alert-message').append(compiled({'message' : message}));
 }
