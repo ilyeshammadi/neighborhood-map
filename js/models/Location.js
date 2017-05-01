@@ -143,7 +143,7 @@ async function getPlaceDetail(venue_id) {
 			'</div>';
 
 	} catch (err) {
-		alertError();
+		alertError("Can't load data from Foursquare API server");
 		contentString = "Can't load data from server";
 	}
 

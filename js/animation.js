@@ -55,5 +55,5 @@ function closeSearchArea() {
 
 function alertError(message) {
 	const compiled = _.template('<div class="alert alert-danger" role="alert"><%= message %></div>')
-	$('#alert-message').append(compiled({'message' : message}));
+	$('#alert-message').html(compiled({'message' : message}));
 }

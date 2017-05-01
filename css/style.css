@@ -18,6 +18,9 @@ nav {
 #content {
 	display: inline-block;
 	width: calc(100vw - 280px);
+	position: absolute;
+	top: 0;
+	right: 0px;
 }
 
 #map {
@@ -73,12 +76,6 @@ nav {
 	font-weight: 700;
 }
 
-#alert-message {
-	position: fixed;
-	z-index: 999;
-	width: 100%;
-}
-
 @media (max-width: 768px) {
 	#map {
 		width: 100vw;
@@ -89,23 +86,33 @@ nav {
 	}
 }
 
+
 /* Got this code from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_loader */
+
 .loader {
-  border: 6px solid #f3f3f3;
-  border-radius: 50% !important;
-  border-top: 6px solid #3498db;
-  width: 48px;
-  height: 48px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+	border: 6px solid #f3f3f3;
+	border-radius: 50% !important;
+	border-top: 6px solid #3498db;
+	width: 48px;
+	height: 48px;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
 }
 
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
